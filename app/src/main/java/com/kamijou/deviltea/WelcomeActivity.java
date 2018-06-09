@@ -6,7 +6,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Welcome extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +14,7 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
 
         MyHandler myHandler = new MyHandler();
-        myHandler.sendEmptyMessageDelayed(0, 3000);
+        myHandler.sendEmptyMessageDelayed(0, 1000);
     }
 
     private class MyHandler extends Handler {
@@ -22,7 +22,7 @@ public class Welcome extends AppCompatActivity {
 
         @Override
         public void handleMessage(Message msg) {
-            Intent intent = new Intent(Welcome.this, MainActivity.class);
+            Intent intent = new Intent(WelcomeActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
         }

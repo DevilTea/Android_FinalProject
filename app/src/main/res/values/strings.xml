@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">大家的五十音</string>
-    <string name="tab_hiragana">平假名</string>
-    <string name="tab_katakana">片假名</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_kana">所有假名</string>
+    <string name="kana">假名</string>
+    <string name="hiragana">平假名</string>
+    <string name="katakana">片假名</string>
+    <string name="pinyin">羅馬拼音</string>
+    <string name="start_exam">GO</string>
+    <string name="check_all">全選</string>
+    <string name="clear_all">清除全部</string>
+    <string name="statistics">統計</string>
+    <string name="your_correct_percentage">你的答對率</string>
 </resources>

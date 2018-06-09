@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ExamActivity2">
+
+    <Button
+        android:id="@+id/bt_kana_to_pinyin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/colorKatakanaButtonBackground"
+        android:text="あ → a"
+        android:textAllCaps="false"
+        android:textColor="@color/colorKanaButtonText"
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/bt_pinyin_to_kana"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/colorHiraganaButtonBackground"
+        android:text="a → あ"
+        android:textAllCaps="false"
+        android:textColor="@color/colorKanaButtonText"
+        android:textSize="36sp" />
+</LinearLayout>

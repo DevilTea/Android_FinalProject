@@ -7,21 +7,26 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class LearningActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
-    private HiraganaFragment hiraganaFragment = new HiraganaFragment();
-    private KatakanaFragment katakanaFragment = new KatakanaFragment();
+    private KanaFragment hiraganaFragment = new KanaFragment();
+    private KanaFragment katakanaFragment = new KanaFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_learning);
 
-        viewPager = (ViewPager) findViewById(R.id.main_view_pager);
-        tabLayout = (TabLayout) findViewById(R.id.main_tab_layout);
+        hiraganaFragment.setType(Constant.TYPE_HIRAGANA);
+        hiraganaFragment.setExam(false);
+        katakanaFragment.setType(Constant.TYPE_KATAKANA);
+        katakanaFragment.setExam(false);
+
+        viewPager = (ViewPager) findViewById(R.id.learning_view_pager);
+        tabLayout = (TabLayout) findViewById(R.id.learning_tab_layout);
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override

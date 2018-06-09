@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3f6eb5</color>
-    <color name="colorPrimaryDark">#2560cb</color>
-    <color name="colorAccent">#40acff</color>
+    <color name="colorPrimary">#2580cb</color>
+    <color name="colorPrimaryDark">#2580cb</color>
+    <color name="colorAccent">#2580cb</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorKanaFragmentBackground">#ffffff</color>
+    <color name="colorHiraganaButtonBackground">#68d4ff</color>
+    <color name="colorKatakanaButtonBackground">#4fa6c8</color>
+    <color name="colorAllkanaButtonBackground">#31687e</color>
+    <color name="colorKanaButtonText">#ffffff</color>
 </resources>
