@@ -1,6 +1,8 @@
 package com.kamijou.deviltea;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -150,12 +153,31 @@ public class KanaAdapter extends RecyclerView.Adapter {
     }
 
     public void showKanaInfoDialog(KanaData kanaData) {
+        final MediaPlayer mediaPlayer = MediaPlayer.create(context, kanaData.getResId());
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_kana_info, null);
         ((TextView) view.findViewById(R.id.tv_kana)).setText(kanaData.getKana(type));
         ((TextView) view.findViewById(R.id.tv_hiragana)).setText(kanaData.getHiragana());
         ((TextView) view.findViewById(R.id.tv_katakana)).setText(kanaData.getKatakana());
         ((TextView) view.findViewById(R.id.tv_pinyin)).setText(kanaData.getPinyin());
-        AlertDialog dialog = new AlertDialog.Builder(context).setView(view).create();
+        ((ImageButton) view.findViewById(R.id.img_bt_play)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!mediaPlayer.isPlaying()) {
+                    mediaPlayer.start();
+                }
+            }
+        });
+        AlertDialog dialog = new AlertDialog.Builder(context)
+                .setView(view)
+                .setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        if(mediaPlayer.isPlaying()) {
+                            mediaPlayer.stop();
+                        }
+                    }
+                })
+                .create();
         dialog.show();
         WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
         DisplayMetrics displayMetrics = new DisplayMetrics();
