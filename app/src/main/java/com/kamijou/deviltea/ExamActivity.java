@@ -135,9 +135,9 @@ public class ExamActivity extends AppCompatActivity {
             kanaFragment.getAdapter().setAllCheckboxes(true);
         } else if(item.getItemId() == R.id.clear_all) {
             kanaFragment.getAdapter().setAllCheckboxes(false);
-        } else if(item.getItemId() == R.id.statistics) {
+        }/* else if(item.getItemId() == R.id.statistics) {
             Toast.makeText(this, "統計資料", Toast.LENGTH_SHORT).show();
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 }

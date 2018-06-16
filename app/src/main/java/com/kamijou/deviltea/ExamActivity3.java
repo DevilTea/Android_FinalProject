@@ -1,7 +1,10 @@
 package com.kamijou.deviltea;
 
+import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,23 +64,26 @@ public class ExamActivity3 extends AppCompatActivity {
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int index = btSelections.indexOf(button);
-                        Question question = questions.get(numOfAnswered);
-                        if(question.getAnswer() == question.getSelections().get(index)) {
-                            numOfCorrect++;
-                            if(numOfAnswered == questions.size() - 1) {
-                                numOfAnswered++;
-                                showExamResultDialog();
+                        try {
+                            int index = btSelections.indexOf(button);
+                            Question question = questions.get(numOfAnswered);
+                            if (question.getAnswer() == question.getSelections().get(index)) {
+                                numOfCorrect++;
+                                if (numOfAnswered == questions.size() - 1) {
+                                    numOfAnswered++;
+                                    showExamResultDialog();
+                                } else {
+                                    nextQuestion();
+                                }
                             } else {
-                                nextQuestion();
+                                numOfIncorrect++;
+                                question.increaseIncorrectCount();
+                                ((Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE)).vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
                             }
-                        } else {
-                            numOfIncorrect++;
-                            question.increaseIncorrectCount();
-                        }
-                        tvCorrect.setText("O: " + numOfCorrect);
-                        tvIncorrect.setText("X: " + numOfIncorrect);
-                        tvProgress.setText(numOfAnswered + " / " + questions.size());
+                            tvCorrect.setText("O: " + numOfCorrect);
+                            tvIncorrect.setText("X: " + numOfIncorrect);
+                            tvProgress.setText(numOfAnswered + " / " + questions.size());
+                        } catch (Exception e) {}
                     }
                 });
             }
